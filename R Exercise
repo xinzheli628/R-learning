@@ -1,0 +1,1192 @@
+setwd("C:/Users/CDA/Desktop/R")
+getwd()
+#########指定工作目录#######################
+install.packages("ggplot2")
+installed.packages()
+library(ggplot2)
+
+name <-"xiaoming"
+name
+age <-23
+age<-40
+age
+agelist <- c(10,20,30)
+age <-100
+age
+agelist
+
+ls(pat="^m")
+?ggplot2
+?lm
+library(ggplot2);
+
+age <- c(1, 3, 5, 2, 11, 9, 3, 9, 12, 3)
+weight <- c(4.4, 5.3, 7.2, 5.2, 8.5, 7.3, 6, 10.4, 10.2, 6.1)
+mean(weight)
+sd(weight)
+cor(age, weight) #Pearson相关系数R
+plot(age, weight)#绘制散点图
+demo(graphics)
+
+help.start() #打开帮助文档首页
+help("lm")   #查看lm函数的帮助
+help.search()#以**为关键词查找。。函数
+example("lm")#函数lm的使用示例
+apropos("foo")#名称含有foo的函数
+data()  #列出当前已加载包中所含的所有可用示例数据集
+
+getwd()
+setwd("C:/Users/CDA/Desktop/R")
+ls()   #列出当前工作空间中的对象
+rm(objectlist) #移除(删除)一个或多个对象
+help(options)  #显示可用选项的说明
+options()      #显示或设置当前选项
+history(10)
+save.image("C:/Users/CDA/Desktop/R")
+
+options()
+options(digits=3)#显示为具有小数点后三位有效数字的格式
+x <- runif(20)
+summary(x)
+hist(x)
+savehistory()
+save.image()
+install.packages("ggplot2")
+install.packages("cluster")
+library(cluster)
+library(gclus);
+install.packages("installr")
+lm(mpg~wt,data=mtcars)
+lmfit <-lm(mpg~wt,data=mtcars)
+summary(lmfit)
+plot(lmfit)
+cook<-cooks.distance(lmfit)
+plot(cook)
+predict(lmfit, mynewdata)
+install.packages("vcd")
+library(vcd)
+install.packages("grid")
+library(grid)
+library(vcd)
+help(package="vcd")
+help("Arthritis")
+Arthritis
+example("Arthritis")
+
+qplot(carat,price,data=diamonds)
+
+p <- ggplot(diamonds,aes(carat,price,colour=cut))
+
+#向量####################################################
+a <- c(1,2,5,3,6,-2,-6)#数值型
+b <- c("one","two","three")#字符型
+c <- c(TRUE,FALSE,TRUE,FALSE,TRUE,FALSE)#逻辑型
+b[c(1,3)]
+b[2]
+mymatrix <- matrix(vector,num_of_rows,num_of_columns)
+mymatrix <- matrix(1:20,5,4)
+mymatrix
+#矩阵####################################################
+myymatrix <- matrix(vector, nrow=number_of_rows, ncol=number_of_columns,
+                    byrow=logical_value, dimnames=list(
+                      char_vector_rownames, char_vector_colnames))
+cells <- c(1,26,24,68,38,46)
+cells
+rnames <- c("R1","R2")
+rnames
+cnames <- c("c1","c2","c3")
+cnames
+mmatrix <- matrix(cells,nrow=2,ncol=3,byrow=TRUE,dimnames = list(rnames,cnames))
+mmatrix
+x <- matrix(1:10,2)
+x 
+x[2,]
+x[1,]
+x[,2]
+x[,4]
+x[1,4]
+(x[1,4])>8
+x[1,c(3,4,5)]
+#数组####################################################
+dim1 <- c("a1","a2")
+dim2 <- c("b1","b2","b3")
+dim3 <- c("c1","c2","c3","c4")
+z <- array(1:24,c(2,3,4),dimnames = list(dim1,dim2,dim3))
+z[1,c(2,3),c(2,3)]
+#数据框##################################################
+patientID <- c(1,2,3,4)
+age <- c(25,34,28,52)
+diabetes <- c("Type1","Type2","Type3","Type4")
+status <- c("Poor","Improved","Excellent","Poor")
+patientdata <- data.frame(patientID,age,diabetes,status)
+patientdata[1]
+patientdata[c("diabetes","status")]
+patientdata$diabetes
+table(patientdata$diabetes,patientdata$status)
+summary(mtcars$mpg)
+plot(mtcars$mpg,mtcars$disp)
+plot(mtcars$mpg,mtcars$wt)
+# attach&detach with#####################################
+attach(mtcars)
+summary(mpg)
+plot(mpg,disp)
+plot(mpg,wt)
+detach(mtcars)
+with(mtcars,{
+  summary(mpg,disp,wt)
+  plot(mpg,disp)
+  plot(mpg,wt)
+})
+remove(mpg)
+patientID <- c(1, 2, 3, 4)
+age <- c(25, 34, 28, 52)
+diabetes <- c("Type1", "Type2", "Type1", "Type1")
+status <- c("Poor", "Improved", "Excellent", "Poor")
+patientdata <- data.frame(patientID, age, diabetes, status)
+patientdata
+
+diabetes <- c("Type1", "Type2", "Type1", "Type1")
+diabetes_1 <- factor(diabetes)
+diabetes_1
+status <- c("Poor", "Improved", "Excellent", "Poor")
+factor(status,ordered = TRUE,levels = c("Poor","Improved","Excellent"))
+
+patientID <- c(1, 2, 3, 4)
+age <- c(25, 34, 28, 52)
+diabetes <- c("Type1", "Type2", "Type1", "Type1")
+status <- c("Poor", "Improved", "Excellent", "Poor")
+status <- factor(status,ordered = TRUE)
+diabetes <- factor(diabetes)
+patientdata <- data.frame(patientID, age, diabetes, status)
+str(patientdata) #######显示对象的结构
+?str
+summary(patientdata)#######显示对象的统计摘要,连续变量各值及分类变量频数
+
+#列表#################################################
+g <- "My First List" 
+h <- c(25,26,18,39)
+j <- matrix(1:10,nrow=5)
+k <- c("one","two","three")
+mylist <- list(title=g,age=h,mat=j,num=k)
+mylist
+x <- c(8,6,4)
+x[7] <- 10
+mydata <- data.frame(age=numeric(0),
+                     gender=character(0), weight=numeric(0))
+mydata <- edit(mydata)
+mydata
+
+sales <- read.table("C:/Users/CDA/Desktop/R/Data/sales.csv",
+                    header = FALSE,sep = ",")
+sales
+help("read.table")
+install.packages(Hmisc)
+library(Hmisc)
+install.packages(RODBC)
+library(RODBC)
+
+attach(mtcars)
+summary(mpg)
+plot(mpg,wt)
+abline(lm(mpg~wt))
+title("Regression of MPG On Weight")
+detach(mtcars)
+
+#############将图形导出PDF#######################
+pdf("mygraph.pdf")
+attach(mtcars)
+summary(mpg)
+plot(wt,mpg)
+abline(lm(mpg~wt))
+title("Regression of MPG On Weight")
+detach(mtcars)
+dev.off()
+
+#为图形添加趋势线################################
+attach(mtcars)
+plot(wt, mpg)
+abline(lm(mpg~wt))
+title("Regression of MPG on Weight")
+detach(mtcars)
+install.packages("Hmisc")
+library(Hmisc)
+dose <- c(20, 30, 40, 45, 60)
+drugA <- c(16, 20, 27, 40, 60)
+drugB <- c(15, 18, 25, 31, 40)
+plot(dose, drugA, type="b")
+help("plot")
+
+#修改图形参数####################################
+opar <- par(no.readonly=TRUE)
+par(lty=2, pch=16)
+plot(dose, drugA, type="b")
+par(opar)
+plot(dose, drugA, type="b", lty=2, pch=17,col="blue",bg="green")
+plot(dose, drugA, type="b", lty=3, lwd=3, pch=18, cex=1.5,bg="#00CCFFFF")
+
+#颜色############################################
+colors()
+n <- 15
+mycolors <- rainbow(n)
+pie(rep(1, n), labels=mycolors, col=mycolors)
+mygrays <- gray(0:n/n)
+pie(rep(1, n), labels=mygrays, col=mygrays)
+mycolors
+names(pdfFonts())
+
+#使用图形参数控制图形输出########################
+dose <- c(20, 30, 40, 45, 60)
+drugA <- c(16, 20, 27, 40, 60)
+drugB <- c(15, 18, 25, 31, 40)
+opar <- par(no.readonly=TRUE)
+par(pin=c(3, 3))
+par(lwd=2, cex=1.5)
+par(cex.axis=.75, font.axis=3)
+plot(dose, drugA, type="b", pch=19, lty=2, col="red")
+plot(dose, drugB, type="b", pch=23, lty=6, col="blue", bg="green")
+par(opar)
+
+#使用图形参数添加标题及坐标轴标签################  
+plot(dose, drugA, type="b",
+     col="red", lty=2, pch=2, lwd=2,
+     main="Clinical Trials for Drug A",
+     sub="This is hypothetical data",
+     xlab="Dosage", ylab="Drug Response",
+     xlim=c(20, 60), ylim=c(0, 70))
+
+title(main="My Title", col.main="red",
+      sub="My Subtitle", col.sub="blue",
+      xlab="My X label", ylab="My Y label",
+      col.lab="green", cex.lab=0.75)
+#自定义坐标轴##############################
+x <- c(1:10)
+y <- x
+z <- 10/x
+opar <- par(no.readonly=TRUE)
+par(mar=c(5, 4, 4, 8) + 0.1)
+plot(x, y, type="b",pch=21, col="red",yaxt="n", lty=3, ann=FALSE)
+lines(x, z, type="b", pch=22, col="blue", lty=2)
+axis(2, at=x, labels=x, col.axis="red", las=2)
+axis(4, at=z, labels=round(z, digits=2),
+     col.axis="blue", las=2, cex.axis=0.7, tck=-.01)
+mtext("y=10/x", side=4, line=3, cex.lab=1, las=2, col="blue")
+title("An Example of Creative Axes",
+      xlab="X values",
+      ylab="Y=X")
+par(opar)
+#添加次坐标轴和参考线##############################
+library(Hmisc)
+minor.tick(nx=n, ny=n, tick.ratio=n)
+minor.tick(nx=2, ny=3, tick.ratio=0.5)
+
+abline(h=yvalues, v=xvalues)
+abline(h=c(1,5,7))
+abline(v=seq(1, 10, 2), lty=2, col="blue")
+
+###########依剂量对比药物A和药物B的响应情况##############
+dose <- c(20, 30, 40, 45, 60)
+drugA <- c(16, 20, 27, 40, 60)
+drugB <- c(15, 18, 25, 31, 40)
+opar <- par(no.readonly = TRUE)
+par(lwd=2,cex=1.5,font.lab=2)
+plot(dose,drugA,type="b",pch=15,lty=1,col="red",ylim = c(0,60),
+     main = "DrugA vs DrugB",
+     xlab = "DrugADose",ylab = "Drug Response")
+lines(dose,drugB,type = "b",pch=17,lty=2,col="blue")
+abline(h=c(30),lwd=1,lty=1,col="gray")
+library(Hmisc)
+minor.tick(nx=3, ny=3, tick.ratio=0.5)
+legend("topleft", inset=.05, title="Drug Type", c("A","B"),
+       lty=c(1, 2), pch=c(15, 17), col=c("red", "blue"))
+par(opar)
+
+############文本标注及添加标签#####################
+text(location, "text to place", pos, ...)
+mtext("text to place", side, line=n, ...)
+
+attach(mtcars)
+plot(wt, mpg,
+     main="Mileage vs. Car Weight",
+     xlab="Weight", ylab="Mileage",
+     pch=18, col="blue")
+text(wt, mpg,
+     row.names(mtcars),
+     cex=0.6, pos=4, col="red")
+detach(mtcars)
+
+opar <- par(no.readonly=TRUE)
+par(cex=1.5)
+plot(1:7,1:7,type="n")
+text(3,3,"Example of default text")
+text(4,4,family="mono","Example of mono-spaced text")
+text(5,5,family="serif","Example of serif text")
+par(opar)
+#多个图形的组合显示#####################
+attach(mtcars)
+opar <- par(no.readonly=TRUE)
+par(mfrow=c(2,2))
+plot(wt,mpg, main="Scatterplot of wt vs. mpg")
+plot(wt,disp, main="Scatterplot of wt vs. disp")
+hist(wt, main="Histogram of wt")
+boxplot(wt, main="Boxplot of wt")
+par(opar)
+detach(mtcars)
+
+attach(mtcars)
+opar <- par(no.readonly=TRUE)
+par(mfrow=c(3,1))
+hist(wt)
+hist(mpg)
+hist(disp)
+par(opar)
+detach(mtcars)
+
+attach(mtcars)
+layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE))
+hist(wt)
+hist(mpg)
+hist(disp)
+detach(mtcars)
+
+attach(mtcars)
+layout(matrix(c(1, 1, 2, 3), 2, 2, byrow = TRUE),
+       widths=c(3, 1), heights=c(1, 2))
+hist(wt)
+hist(mpg)
+hist(disp)
+detach(mtcars)
+
+############多幅图形的精细布局####################
+opar <- par(no.readonly=TRUE)
+par(fig=c(0, 0.8, 0, 0.8))
+plot(mtcars$wt, mtcars$mpg,
+     xlab="Miles Per Gallon",
+     ylab="Car Weight")
+par(fig=c(0, 0.8, 0.55, 1), new=TRUE)
+boxplot(mtcars$wt, horizontal=TRUE, axes=FALSE)
+par(fig=c(0.65, 1, 0, 0.8), new=TRUE)
+boxplot(mtcars$mpg, axes=FALSE)
+mtext("Enhanced Scatterplot", side=3, outer=TRUE, line=-3)
+par(opar)
+
+#############################基本数据管理#######################
+manager <- c(1, 2, 3, 4, 5)
+date <- c("10/24/08", "10/28/08", "10/1/08", "10/12/08", "5/1/09")
+country <- c("US", "US", "UK", "UK", "UK")
+gender <- c("M", "F", "F", "M", "F")
+age <- c(32, 45, 25, 39, 99)
+q1 <- c(5, 3, 3, 3, 2)
+q2 <- c(4, 5, 5, 3, 2)
+q3 <- c(5, 2, 5, 4, 1)
+q4 <- c(5, 5, 5, NA, 2)
+q5 <- c(5, 5, 2, NA, 1)
+leadership <- data.frame(manager, date, country, gender, age,
+                         q1, q2, q3, q4, q5, stringsAsFactors=FALSE)
+leadership
+
+###1.创建新变量#########################
+#a).
+mydata <- data.frame(x1=c(2,2,6,4),
+                     x2=c(3,4,2,8))
+mydata$sumx <- mydata$x1+mydata$x2
+mydata$meanx <- (mydata$x1+mydata$x2)/2
+mydata$sumax
+mydata$meanx
+#b).
+attach(mydata)
+mydata$sumx <- x1+x2
+mydata$meanx <- (x1+x2)/2
+detach(mydata)
+#c).
+mydata <- transform(mydata,sumx=x1+x2,
+                           meanx=(x1+x2)/2)
+mydata
+
+###2.变量重编码#########################
+leadership$age[leadership$age==99] <- NA
+leadership
+leadership$age[leadership$age>55] <- "Elder"
+leadership$age[leadership$age>=35 & leadership$age <=55] <- "Middle Age"
+leadership$age[leadership$age<35] <- "Young"
+leadership
+
+leadership <- within(leadership,{
+  agecat <- NA
+  agecat[age > 75] <- "Elder"
+  agecat[age >= 55 & age <= 75] <- "Middle Aged"
+  agecat[age < 55] <- "Young" })
+fix(leadership)
+install.packages("reshape")
+library(reshape)
+leadership <- rename(leadership,c(manager="Manager_ID",date="TestDate"))
+help("reshape2")
+names(leadership)[2] <- "testDate"
+names(leadership)
+
+###3.缺失值处理##########################
+is.na(leadership)[,6:10]
+x <- c(1, 2, NA, 3)
+y <- x[1] + x[2] + x[3] + x[4]
+z <- sum(x,na.rm = TRUE) #na.rm
+
+newdata <- na.omit(leadership)
+newdata
+
+mydates <- as.Date("2007-06-22","2004-02-13")
+
+a <- c(1,2,3)
+is.numeric(a)
+is.vector(a)
+a <- as.character(a)
+is.numeric(a)
+is.vector(a)
+is.character(a)
+
+sapply(dataset,function(x) sum(is.na(x)))
+sapply(dataset,class)
+
+###4.数据排序####################
+newdata <- leadership[order(leadership$age),]#??????????????????
+newdata
+attach(leadership)
+newdata <- leadership[order(gender,-age),]
+detach(leadership)
+newdata <- leadership[,6:10]
+newdata
+myvars <- paste("q",1:5,sep = " ")
+newdata <- leadership[myvars]
+newdata <- leadership[myvars]
+
+#############使用XGBoost建模##############
+
+library(lattice)
+library(ggplot2)
+library(xgboost)
+library(readr)
+library(stringr)
+library(caret)
+library(car)
+
+set.seed(100)
+df_train <- read.csv("C:/Users/CDA/Desktop/pm_customer_train2.csv")
+df_train
+
+train_sub <- sample(nrow(df_train),3/4*nrow(df_train))
+train_data <- df_train[train_sub,]
+test_data <- df_train[-train_sub,]
+dim(train_data)
+dim(test_data)
+
+df_train <- train_data
+df_test <- test_data
+
+leadership <- rename(leadership,c(manager="Manager_ID",date="TestDate"))
+df_train <- rename(df_train,c(锘縞ustomer_id="Customer_ID"))
+df_test <- rename(df_test,c(锘縞ustomer_id="Customer_ID"))
+df_test
+labels = df_train["labels",]
+df_train = df_train[-grep('labels', colnames(df_train))]
+
+########独热编码##########
+df_all = rbind(df_train,df_test)
+dummies <- dummyVars(~ gender +  education + employer, data = df_all)
+df_all_ohe <- as.data.frame(predict(dummies, newdata = df_all))
+df_all_combined <- cbind(df_all[,-c(which(colnames(df_all) %in% ohe_feats))],
+   df_all_ohe)df_all_combined$agena <- as.factor(ifelse(df_all_combined$age < 0,1,0))
+y <- df_train$purchase
+
+xgb <- xgboost(data = data.matrix(df_train[,-13]), 
+               label = y, 
+               eta = 0.1,
+               max_depth = 15, 
+               nround=25, 
+               subsample = 0.5,
+               colsample_bytree = 0.5,
+               seed = 1,
+               eval_metric = "merror",
+               objective = "multi:softprob",
+               num_class = 12,
+               nthread = 3
+);
+
+y_pred <- predict(xgb, data.matrix(df_test[,-13]))
+y_pred
+dataset <- read.table("http://archive.ics.uci.edu/ml/machine-learning-databases/credit-screening/crx.data", sep = ",", na.strings = "?")
+
+head(dataset)
+
+write.csv(dataset,file = "C:/Users/CDA/Desktop/creditCard.csv",sep = ",")
+dataset
+
+############查看数据是否有缺失值和各个数据的类型############
+sapply(dataset,function(x) sum(is.na(x)))
+sapply(dataset,class)
+############Train and Test###############
+set.seed(123)
+dataset = na.omit(dataset)
+n <- dim(dataset)[1]
+index <- sample(n,round(0.7*n))
+train <- dataset[index,]
+test <- dataset[-index,]
+dim(train)
+dim(test)
+############哑变量变换############## 
+###  knn glmnet svm xgboost不能直接使用因子类型数据
+###  logistic regression raprt GBM randomforest#######
+
+dataset2 <- dataset
+library(plyr)
+into_factor = function(x)
+{
+  if(class(x) == "factor")
+  {
+    n=length(x)
+    data.fac = data.frame(x=x,y=1:n)
+    output = model.matrix(y~x,data.fac)[,-1]
+    ## Convert factor into dummy variable matrix
+  } else 
+    {
+    output = x
+    ##if x is numeric,out is x
+    }
+  output 
+}
+into_factor(dataset$V4)[1:5]
+
+dataset2 = colwise(into_factor)(dataset2)
+dataset2 = do.call(cbind,dataset2)
+dataset2 = as.data.frame(dataset2)
+head(dataset2)
+
+#############Logistic Regression#############
+logit.model = glm(V16~.,data = train,family = "binomial")
+logit.response = predict(logit.model,test,type = "response")
+logit.predict = ifelse(logit.response>0.5,"+","-")
+table(logit.predict,test$V16)
+accurancy1 = mean(logit.predict == test$V16)
+accurancy1
+
+###############GBM(gradient boosting machine)####################
+library(lattice)
+library(ggplot2)
+library(caret)
+ctrl = trainControl(method = "repeatedcv", number = 5, repeats = 5)
+set.seed(300)
+m_gbm = train(V16 ~ ., data=train, method = "gbm",  metric = "Kappa", trControl = ctrl)
+
+gbm.predict = predict(m_gbm,test)
+table(gbm.predict,test$V16)
+accurancy2 = mean(gbm.predict == test$V16)
+accurancy2
+
+#################knn method for classification###################
+library(caret)
+knn.model1 = knn3(V16 ~ .,data = train, k = 5) 
+knn.response1 = predict(knn.model1,test,class = "response") 
+knn.predict1 = ifelse(knn.response1[,1]<0.5,"+","-")
+table(knn.predict1,test$V16)
+
+mean(knn.predict1 == test$V16)
+
+###########经过标准化和数据转换之后的准确率:#####################
+knn.dataset = cbind(colwise(scale)(dataset2[,-38]),V16 = as.factor(dataset2$V16))
+set.seed(123)
+index <- sample(n,round(0.7*n))
+train.knn <- knn.dataset[index,]
+test.knn <- knn.dataset[-index,]
+knn.model1 = knn3(V16 ~ .,data = train.knn, k = 5)
+knn.predict1 = predict(knn.model1,test.knn,type = "class")
+table(knn.predict1,test.knn$V16)
+
+mean(knn.predict1 == test.knn$V16)
+
+library(class)
+cv.knn = function(data,n=5,k){
+  index = sample(1:5,nrow(data),replace = T)
+  acc=0
+  for ( i in 1:5){
+    ind = index == i
+    train = data[-ind,]
+    test = data[ind,]
+    knn.model1 = knn3(V16 ~ .,data = train, k = k)  
+    knn.predict= predict(knn.model1,test,type = "class") 
+    acc[i] = mean(knn.predict == test$V16)
+  }
+  mean(acc)}
+cv.knn(train.knn,3,5)
+
+k = 2:20
+set.seed(123)
+acc = sapply(k,function(x) cv.knn(train.knn,3,x))
+plot(k,acc,type = "b")
+k.final = which.max(acc)
+knn.model.f = knn3(V16 ~ .,data = train.knn, k = k.final)
+knn.predict.f = predict(knn.model.f,test.knn,type = "class") 
+table(knn.predict.f,test.knn$V16)
+mean(knn.predict.f == test.knn$V16)
+
+library(caret)
+fitControl <- trainControl(method = "cv", number = 10)
+knnTune <- train(x = dataset2[1:37], y = dataset2[,38],
+                 method = "knn", preProc = c("center", "scale"),
+tuneGrid = data.frame(.k = 1:20), trControl = fitControl)
+knn_train_test = function(train,test,k =5){
+  knn.model.f = knn3(V16 ~ .,data = train, k = k)  
+  knn.predict.f = predict(knn.model.f,test,type = "class") 
+  mean(knn.predict.f == test$V16)}
+x = 1:20
+result = sapply(x,function(x) knn_train_test(train.knn,test.knn,k = x))
+plot(x,result,type = "b")
+k.final = which.max(result)
+accurancy3 = knn_train_test(train.knn,test.knn,k = k.final)
+accurancy3
+
+####################xgboost#####################
+devtools::install_github('dmlc/xgboost',subdir='R-package')
+require(xgboost)
+library(xgboost)
+require(methods)
+require(plyr)
+set.seed(123)
+index = sample(n,round(0.7*n))
+train.xg = dataset2[index,]
+test.xg = dataset2[-index,]
+label <- as.matrix(train.xg[,38,drop =F])
+data <- as.matrix(train.xg[,-38,drop =F])
+data2 <-  as.matrix(test.xg[,-38,drop =F])
+label2 =  as.matrix(test.xg[,38,drop =F])
+xgmat <- xgb.DMatrix(data, label = label, missing = -10000)
+
+param <- list("objective" = "binary:logistic","bst:eta" = 1,"bst:max_depth" = 2,"eval_metric" = "logloss","silent" = 1,"nthread" = 16 ,"min_child_weight" =1.45)
+nround =275
+bst = xgb.train(param, xgmat, nround )
+res1 = predict(bst,data2)
+pre1 = ifelse(res1>0.5,1,0)
+table(pre1,label2)
+accurancy4 = mean(pre1 ==label2)
+accurancy4 
+
+#########数据和特征决定了效果上限，模型和算法决定了逼近这个上限的程度##########
+
+##########日期值##########
+mydates <- as.Date(c("2017-6-22","2014-02-13"))
+mydates
+
+
+
+strDates1 <- c("06/22/1987", "08/18/1987")
+strDates2 <- c("01/05/1965", "08/16/1975")
+dates1 <- as.Date(strDates1,"%m/%d/%Y") ######大写Y和小写Y存在区别#####
+dates2 <- as.Date(strDates2,"%m/%d/%Y")
+dates1
+dates2
+Sys.Date()
+date()
+today <- Sys.Date()
+format(today,format="%m %d %Y") ###########日期格式大小写影响结果###########
+format(today,"%A")
+startdate <- as.Date("2004-02-14")
+enddate <- as.Date("2011-01-02")
+days <- enddate - startdate
+days
+startdate <- as.Date("2004-02-13")
+enddate <- as.Date("2011-01-22")
+days <- enddate - startdate
+days
+today <- Sys.Date()
+dob <- as.Date("1956-10-12")
+difftime(today,dob,units = "secs")
+
+strDates <- as.character(dates)
+strDates
+########判断 is.XXXX 转换 as.XXXX ############
+is.numeric()
+as.numeric()
+
+a <- c(1,2,3)
+a
+is.numeric(a)
+is.vector(a)
+a <- as.character(a)
+a
+is.numeric(a)
+is.vector(a)
+is.character(a)
+
+########数据排序########
+
+newdata <- leadership[order(leadership$age)]
+newdata
+
+########数据取子集#########
+newdata <- leadership[,c(6:10)]
+newdata
+myvars <- c("q1", "q2", "q3", "q4", "q5")
+newdata <-leadership[myvars]
+
+########剔除变量#########
+myvars <- names(leadership) %in% c("q3","q4")
+myvars
+
+newdata <- leadership[!myvars]
+newdata
+
+newdata <- leadership[c(-8,-9)]
+newdata
+########选入观测 条件筛选 which#########
+newdata <- leadership[1:3,]
+newdata
+newdata <- leadership[which(leadership$gender=="M" & 
+                            leadership$age != "Young"),]
+newdata
+
+
+leadership$date <- as.Date(leadership$date, "%m/%d/%y")
+startdate <- as.Date("2009-01-01")
+enddate <- as.Date("2009-10-31")
+newdata <- leadership[which(leadership$date >= startdate &
+                              leadership$date <= enddate),]
+
+leadership$date <- as.Date(leadership$date,"%m/%d%y")
+leadership$date <- as.Date(leadership$date, "%m/%d/%y")
+startdate <- as.Date("2009-01-01")
+enddate <- as.Date("2009-10-31")
+newdata <- leadership[which(leadership$testDate >= startdate & 
+                              leadership$testDate <= enddate)]
+newdata
+leadership
+############subset函数筛选变量和观测#############
+newdata <- subset(leadership,age>= 45| age<=26,
+                  select = c(q1,q2,q3,q4))
+newdata
+
+newdata <- subset(leadership,gender=="F"& age<=26,
+                  select = gender:q4)
+newdata
+
+#################################################################
+###########################随机抽样##############################
+#################################################################
+###sample函数
+mysample <- leadership[sample(1:nrow(leadership),3,replace = FALSE),]
+mysample
+nrow(leadership)
+ncol(leadership)
+
+set.seed(123)
+df1 = na.omit(leadership)
+n <- dim(leadership)[1]
+n
+index <- sample(n,round(0.7*n))
+index
+train1 <- leadership[index,]
+test1 <- leadership[-index,]
+dim(train1)
+dim(test1)
+test1
+train1
+?sample
+?round
+example("sample")
+####sample####
+x <- 1:12
+sample(x)
+round(3.5999999,digits = 2) ###默认不保留小数位，取整，digits指定小数位数#
+signif(3.5999999,digits = 3)####?????????
+log(x,base = n)
+log(x)   #lnx
+y <- mean(x)
+y
+x
+z <- mean(x,trim = 0.05,na.rm = TRUE)
+w <- median(x)
+e <- sd(x)
+r <- var(x)
+t <- mad(x)####绝对中位差####
+u <- quantile(x,c(.25,.75)) ##百分位数##
+i <- range(x)
+diff(i)
+diff(x,lag = n)
+diff(x)###滞后差分###
+scalex <- scale(x,center=TRUE,scale=TRUE)
+scalex
+n <- length(x)
+meanx <- sum(x)/n
+css <- sum((x-meanx)^2) ##修正平方和##
+sdx <- sqrt(css/(n-1))
+meanx
+sdx
+newdata <- scale(mydata) ##默认进行Z_sore标准化
+newdata
+newdata <- transform(mydata,mydata =scale(mydata)*10+50)
+newdata
+?transform
+
+######概率函数######
+##[dpqr]distribution_abbreviation()
+##d = 密度函数（density）
+##p = 分布函数（distribution function）
+##q = 分位数函数（quantile function）
+##r = 生成随机数（随机偏差）
+x <- pretty(c(-3,3), 30)
+y <-dnorm(x)
+plot(x, y,
+     type="l",
+     xlab="Deviate",
+     ylab="Density",
+     yaxs="i"
+)
+pnorm(1.96)
+qnorm(.9, mean=500, sd=100)
+rnorm(50, mean=50, sd=10)
+#####在每次生成伪随机数的时候，函数都会使用一个不同的种子，因此也会产生不同的结果。你
+#####可以通过函数set.seed()显式指定这个种子，让结果可以重现
+set.seed(123)
+runif(5)
+runif(5)
+library(MASS)
+options(digits = 3)
+set.seed(1234)
+mean <- c(230.7,146.7,3.6)
+sigma <- matrix(c(15360.8, 6721.2, -47.1,
+                  6721.2, 4700.9, -16.5,
+                  -47.1, -16.5, 0.3), nrow=3, ncol=3)
+mydata <- mvrnorm(500, mean, sigma)
+mydata <- as.data.frame(mydata)
+names(mydata) <- c("y","x1","x2")
+dim(mydata)
+head(mydata,n=10)
+x <- c("ab", "cde","fghij")
+length(x)
+nchar(x[2])
+x <- "abcdefg"
+substr(x,2,5)
+
+####grep,模糊匹配，sub,在x中搜索pattern，并以文本replacement将其替换
+####strsplit,在在split处分割字符向量x中的元素
+####paste,连接字符串，分隔符sep；toupper,tolower大小写转换
+grep("A",c("b","A","c"),fixed=TRUE)
+sub("\\s",".","Hello There") ##寻找空格并替换为“.”
+y <- strsplit("abc", "") ###分割元素为"a" "b" "c"
+paste("x", 1:3,sep="")###连接x和数字123
+paste("x",1:3,sep="M")
+paste("Today is", date())
+indices <- seq(1,10,2) ##生成一个以2为公差的等差数列
+rep(x,n)##重复x n次
+cut(x,n)##将连续变量x分割为有n个水平的因子  #数据离散化#
+pretty(x,n) #创建美观的分割点。通过选取n+1个等间距的取整值，将一个连续型变量x分割为n个区间
+
+firstname <- c("Jane")
+cat("Hello" ,firstname, "\n")
+
+mydata <- matrix(rnorm(30),nrow = 6)
+mydata
+apply(mydata,1,mean) ##计算每行均值
+apply(mydata,2,mean) ##计算每列均值
+apply(mydata,2,mean,trim=0.05) ##计算每列截尾均值
+
+options(digits=2)
+Student <- c("John Davis", "Angela Williams", "Bullwinkle Moose",
+             "David Jones", "Janice Markhammer", "Cheryl Cushing",
+             "Reuven Ytzrhak", "Greg Knox", "Joel England",
+             "Mary Rayburn")
+Math <- c(502, 600, 412, 358, 495, 512, 410, 625, 573, 522)
+Science <- c(95, 99, 80, 82, 75, 85, 80, 95, 89, 86)
+English <- c(25, 22, 18, 15, 20, 28, 15, 30, 27, 18)
+roster <- data.frame(Student, Math, Science, English,
+                     stringsAsFactors=FALSE)
+z <- scale(roster[,2:4])
+score <- apply(z, 1, mean)
+roster <- cbind(roster, score)
+y <- quantile(score, c(.8,.6,.4,.2))
+y
+roster$grade[score >= y[1]] <- "A"
+roster$grade[score < y[1] & score >= y[2]] <- "B"
+roster$grade[score < y[2] & score >= y[3]] <- "C"
+roster$grade[score < y[3] & score >= y[4]] <- "D"
+roster$grade[score < y[4]] <- "F"
+name <- strsplit((roster$Student), " ") 
+Lastname <- sapply(name, "[", 2)         ##  "["  是一个可以提取某个对象的一部分的函数##
+Firstname <- sapply(name, "[", 1)
+roster <- cbind(Firstname,Lastname, roster[,-1])
+roster <- roster[order(Lastname,Firstname),]
+roster
+df <- read.csv("D:/CDA课件/R视频/第二节课-R语言/adultTest.csv",sep = ",")
+dim(df)
+apply(df[c("age","fnlwgt","education.num","capital.gain","capital.loss")],MARGIN =2,myfun)
+sapply(df,class)
+
+myfun <- function(x){
+  x * 2 +10
+}
+myfun
+head(df)
+subset(df,age >=30 & df$age == "Male",select = c(age,workclass,label))
+
+?tapply
+tapply(df$age,df$class,mean)
+tapply(df$age,list(df$class,df$sex),mean)
+summary(df)  
+by(df,list(df$sex,df$workclass),summary)
+help("aggregate")
+
+aggregate(age ~ sex,data = df,mean)
+aggregate(weight ~ feed, data = chickwts, mean)
+head(df)
+aggregate(df$age,list(df$class,df$sex),mean)
+table(df$sex,df$class,df$education)
+xtabs(df$age~df$class+df$sex)
+
+##############制流控#############
+
+myfunc <- function(x){
+  x*2+5
+}
+myfunc(2)
+
+
+set.seed(1234)
+X <- rnorm(500)
+mystats <- function(x,parametric = TRUE,print=FALSE){
+  if (parametric){
+    center <- mean(x);spread <- sd(x)
+  }else {
+    center <- median(x);spread <- mad(x)
+  }
+if (print&parametric){
+  cat("Mean=",center,"\n","SD=",spread,"\n")
+} else if(print&!parametric){
+  cat("median=",center,"\n","MAD=",spread,"\n")
+}
+  result <- list(center=center,spread=spread)
+  return(result)
+}
+set.seed(1234)
+x <- rnorm(500)
+y <- mystats(x)
+y <- mystats(x,parametric = FALSE,print = TRUE)
+
+mystats <- function(x, parametric=TRUE, print=FALSE) {
+  if (parametric) {
+    center <- mean(x); spread <- sd(x)
+  } else {
+    center <- median(x); spread <- mad(x)
+  }
+  if (print & parametric) {
+    cat("Mean=", center, "\n", "SD=", spread, "\n")
+  } else if (print & !parametric) {
+    cat("Median=", center, "\n", "MAD=", spread, "\n")
+  }
+  result <- list(center=center, spread=spread)
+  return(result)
+}
+set.seed(1234)
+x <- rnorm(500)
+y <- mystats(x)
+
+##########数据的整合（aggregate）与重构（reshape）############
+#转置
+cars<- mtcars[1:5,1:4]
+cars
+t(cars)
+
+#整合数据
+aggregate(x,by,FUN) #使用一个或多个by变量和一个预先定义好的函数来分组汇总数据
+#其中x是待折叠的数据对象
+#by是一个变量名组成的列表
+#而FUN则是用来计算描述性统计量的标量函数
+options(digits = 3)
+attach(mtcars)
+aggdata <- aggregate(mtcars,list(cyl,gear),sum,na.rm=TRUE)
+aggdata
+
+#reshape2包
+library(reshape2)
+md <-melt(mydata,id=c("ID","Time"))
+
+newdata <- cast(md,formula,FUN)
+#其中的md为已融合的数据
+#formula描述了想要的最后结果
+#而FUN是（可选的）数据整合函数
+dcast(md,ID~variable,mean)
+ID <- c(1,1,2,2)
+Time <- c(1,2,1,2)
+X1 <- c(5,3,6,2)
+X2 <- c(6,5,1,4)
+mydata <- data.frame(ID,Time,X1,X2)
+mydata
+library(reshape2)
+md <- melt(mydata, id=c("ID", "Time")) #宽表转置为长表
+md
+dcast(md,ID+Time~variable) #宽表转置为长表
+dcast(md, ID~variable, mean)
+dcast(md, Time~variable, mean)
+
+Arthritis
+library(vcd)
+counts <- table(Arthritis$Improved)
+counts
+barplot(counts,
+        main = "Simple Bar Plot",
+        xlab = "Improvement",ylab = "Frequency")
+barplot(counts,
+        main="Horizontal Bar Plot",
+        xlab="Frequency", ylab="Improvement",
+        horiz=TRUE)
+counts <- table(Arthritis$Improved, Arthritis$Treatment)
+counts
+#堆积条形图
+barplot(counts,
+        main="Stacked Bar Plot",
+        xlab="Treatment", ylab="Frequency",
+        col=c("red", "yellow","green"),
+        legend=rownames(counts))
+#分组条形图
+barplot(counts,
+        main="Grouped Bar Plot",
+        xlab="Treatment", ylab="Frequency",
+        col=c("red", "yellow", "green"),
+        legend=rownames(counts), beside=TRUE)
+
+#############################描述性统计##############################
+vars <- c("mpg","hp","wt")
+head(mtcars[vars],n=5)
+df <- mtcars[vars]
+
+summary(df)
+#summary()函数提供了最小值、最大值、四分位数和数值型变量的均值，
+#以及因子向量和逻辑型向量的频数统计
+sapply(x,FUN,options)
+
+mystats <- function(x,na.omit=FALSE){
+  if(na.omit)      #????????????
+    x <- x[!is.na(x)]
+  m <- mean(x)
+  n <- length(x)
+  s <- sd(x)
+  skew <- sum((x-m)^3/s^3)/n
+  kurt <- sum((x-m)^4/s^4)/n - 3
+  return(c(n=n, mean=m, stdev=s, skew=skew, kurtosis=kurt))
+}
+myvars <- c("mpg", "hp", "wt")
+sapply(mtcars[myvars], mystats)
+library(lattice)
+library(Hmisc)
+describe(mtcars[vars])
+
+#pastecs --stat.desc()
+
+install.packages("pastecs")
+library(boot)
+library(pastecs)
+stat.desc(mtcars[vars],basic = TRUE)
+library(psych)
+install.packages("psych")
+myvars <- c("mpg", "hp", "wt")
+describe(mtcars[myvars])
+library(dplyr)
+install.packages("dplyr")
+##使用aggregate()分组获取描述性统计量
+aggregate(mtcars[vars],by=list(am=mtcars$am),mean)
+aggregate(mtcars[vars],by=list(am=mtcars$am),sd)
+#注意list(am=mtcars$am)的使用,否则将显示group1
+by(mydata,index,FUN)
+
+#计算数据的1，2，3，4阶矩
+mystats <- function(x,na.omit=FALSE){
+  #if(na.omit)  #????????????
+    x <- x[!is.na(x)]
+  m <- mean(x)
+  n <- length(x)
+  s <- sd(x)
+  skew <- sum((x-m)^3/s^3)/n
+  kurt <- sum((x-m)^4/s^4)/n - 3
+  return(c(n=n, mean=m, stdev=s, skew=skew, kurtosis=kurt))
+}
+
+dstats <- function(x) sapply(x, mystats)
+myvars <- c("mpg", "hp", "wt")
+by(mtcars[myvars], mtcars$am, dstats)
+#分组计算的扩展
+#summaryBy(formula, data=dataframe, FUN=function)
+library(doBy)
+install.packages("doBy")
+summaryBy(mpg+hp+wt~am,data=mtcars,FUN = mystats)
+
+#统计量比较全的包 psych
+library(psych)
+describeBy(mtcars[myvars],list(am=mtcars$am))
+library(reshape)
+dstats <- function(x) (c(n=length(x),mean=mean(x),sd=sd(x)))
+dfm <- melt(mtcars,measure.vars =myvars,id.vars = c("am","cyl"))
+cast(dfm,am+cyl+variable ~.,dstats)
+
+library(vcd)
+head(Arthritis)
+attach(Arthritis)
+table(Treatment,Sex,Improved)
+detach(Arthritis)
+
+##table(var1, var2, …, varN) 使用 N 个类别型变量（因子）创建一个 N 维列联表
+##xtabs(formula, data) 根据一个公式和一个矩阵或数据框创建一个 N 维列联表
+##prop.table(table, margins) 依margins定义的边际列表将表中条目表示为分数形式
+##margin.table(table, margins) 依margins定义的边际列表计算表中条目的和
+##addmargins(table, margins) 将概述边margins（默认是求和结果）放入表中
+##ftable(table) 创建一个紧凑的“平铺”式列联表
+
+mytable <- with(Arthritis,table(Improved))
+mytable
+prop.table(mytable)*100
+mytable <- xtabs(~Treatment+Improved,data= Arthritis)
+mytable 
+
+margin.table(mytable,1)##table()函数默认忽略缺失值（NA）
+prop.table(mytable,1)
+margin.table(mytable,2)
+prop.table(mytable,2)
+addmargins(mytable)
+addmargins(prop.table(mytable,1),2)
+addmargins(prop.table(mytable,2),1)
+
+install.packages("gmodels")
+library(gmodels)
+CrossTable(Arthritis$Treatment,Arthritis$Improved) ##???表怎样解读
+
+help("CrossTable")
+mytable <- xtabs(~ Treatment+Sex+Improved, data=Arthritis)
+mytable
+ftable(mytable)
+margin.table(mytable, 1)
+margin.table(mytable, 2)
+margin.table(mytable, 3)
+margin.table(mytable, c(1, 3))
+ftable(prop.table(mytable, c(1, 2)))
+ftable(addmargins(prop.table(mytable, c(1, 2)), 3))
+
+########独立性检验#########
+##卡方检验原假设:变量各个水平间均值相等，无差异
+library(vcd)
+mytable <- xtabs(~Treatment+Improved,data=Arthritis)
+chisq.test(mytable)#拒绝原假设，接受治疗种类不同，治疗效果有差异
+
+mytable <- xtabs(~Improved+Sex,data = Arthritis)
+chisq.test(mytable)#不拒绝原假设，性别间对治疗效果无影响
+
+##Fisher精确检验,可以使用fisher.test()函数进行Fisher精确检验,不能用于2x2列表检验
+mytable <- xtabs(~Treatment+Improved,data= Arthritis)
+fisher.test(mytable)
+mytable <- xtabs(~Age+Sex,data = Arthritis)
+fisher.test(mytable)
+mytable
+head(Arthritis)
+
+##mantelhean.test()函数可用来进行CMH卡方检验，
+##其原假设是，两个名义变量在第三个变量的每一层中都是条件独立的  
+mytable <- xtabs(~Treatment+Improved+Sex,data=Arthritis)
+mantelhaen.test(mytable)
+##结果表明，患者接受的治疗与得到的改善在性别的每一水平下并不独立
+library(vcd)
+mytable <- xtabs(~Treatment+Improved,data=Arthritis)
+assocstats(mytable)
+
+
